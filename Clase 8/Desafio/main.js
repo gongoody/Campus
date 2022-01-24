@@ -34,7 +34,9 @@ const loadJson = () => {
         }
         console.log(allCharacters)
     })
-    .catch()//investigar que error mostrar
+    .catch(error => {
+        console.log(error)
+    })//investigar que error mostrar
 }
 
 
