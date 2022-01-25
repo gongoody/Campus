@@ -1,44 +1,41 @@
-const loadJson = () => {
-    return fetch('https://swapi.dev/api/films')
-    .then(response => response.json())
-    .then(json => {
-        const allCharacters = {}
-        const list = document.querySelector('ul')
-        for(let i=0; i < json.results.length; i++){
-            const movie = document.createElement('li')
-            movie.innerHTML = `<h3>${json.results[i].title}</h3>`
-            movie.innerHTML += `<p>Episode ${json.results[i].episode_id}</p>`
-            movie.innerHTML += `<p>${json.results[i].opening_crawl}</p>`
-            let castList = '<ul>'
-            json.results[i].characters.forEach(character => {
-                let urlSplit = character.split('/')
-                let id = urlSplit[5]
-                if(allCharacters[id]){
-                    castList += `<li>${allCharacters[id]}</li>`
-                }else{
-                    fetch(character)
-                    .then(response => response.json())
-                    .then(json =>{
-                        allCharacters[id] = json.name
-                        castList += `<li>${allCharacters[id]}</li>`
-                                     
-                    })
-                    castList += `<li>${allCharacters[id]}</li>`                
-
-                }
-            });
-            
-            castList += '<ul>'
-            movie.innerHTML += `Cast: ${castList}`
-            list.appendChild(movie)
-        }
-        console.log(allCharacters)
-    })
-    .catch(error => {
+const getCharacter = async(url) => {
+    try{
+        const response = await fetch(url)
+        const data = await response.json()
+        return data.name
+    }catch(error){
         console.log(error)
-    })//investigar que error mostrar
+    }
 }
 
+const loadFilms = async() => {
+    try{
+        const response = await fetch('https://swapi.dev/api/films')
+        const json = await response.json()
+        const filmsData = json.results
+        const allFilms = document.querySelector('ul')
+        filmsData.map(async film => {
+            const movie = document.createElement('li')
+            movie.innerHTML = `<h2>${film.title}</h2>`
+            movie.innerHTML += `<h3>Episode: ${film.episode_id}</h3>`
+            movie.innerHTML += `<br></br>`
+            movie.innerHTML += `<span>${film.opening_crawl}</span>`
+            movie.innerHTML += `<br></br>`
+            let castList = '<ul>'
+            let charByFilm = film.characters.map(async url =>{
+                return `<li>${await getCharacter(url)}</li>`
+            })
+            let results = await Promise.all(charByFilm)
+            castList += results.join('')
+            castList += '</ul>'
+            movie.innerHTML += `Cast: ${castList}`
+            allFilms.appendChild(movie)
+        })
+
+    }catch(error){
+        console.log(error)
+    }
+}
 
 //Opcion para llenar un objeto con todos los personajes
 
