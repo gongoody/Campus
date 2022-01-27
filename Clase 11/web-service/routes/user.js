@@ -12,7 +12,7 @@ router.get('/', async(req, res) =>{
 
 router.get('/:userId', async(req, res) =>{
     try {
-        const userById = await req.context.models.users.findOne({id:req.params.userId})
+        const userById = await req.context.models.users.findOne({_id:req.params.userId})
         return res.send(userById)
     } catch (error) {
         res.send('Usuario no encontrado')
@@ -34,7 +34,7 @@ router.post('/', async (req, res) =>{
 
 router.put('/:userId', async (req, res) =>{
     try {
-        const modifiedUser = await req.context.models.users.updateOne({id:req.params.userId},{username: req.body.username})
+        const modifiedUser = await req.context.models.users.updateOne({_id:req.params.userId},{username: req.body.username})
         return res.send(modifiedUser)
     } catch (error) {
         res.send('Usuario no encontrado')
@@ -44,7 +44,7 @@ router.put('/:userId', async (req, res) =>{
 
 router.delete('/:userId', async(req, res) =>{
     try {
-        const userDeleted = await req.context.models.users.deleteOne({id:req.params.userId})
+        const userDeleted = await req.context.models.users.deleteOne({_id:req.params.userId})
         res.send(`Usuario eliminado`)
     } catch (error) {
         res.send('Usuario no encontrado')

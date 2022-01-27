@@ -26,6 +26,7 @@ userSchema.pre('remove', function(next){
     this.model('Message').deleteMany({user: this._id}, next)
 })
 
+
 const User = mongoose.model('User', userSchema)
 
 module.exports = User

@@ -13,7 +13,7 @@ router.get('/', async (req, res) =>{
 
 router.get('/:messageId', async(req, res) =>{
     try {
-        const messageById = await req.context.models.messages.findOne({id:req.params.messageId})
+        const messageById = await req.context.models.messages.findOne({_id:req.params.messageId})
         return res.send(messageById)
     } catch (error) {
         res.send('Mensaje no encontrado')
@@ -40,7 +40,7 @@ router.post('/', async(req, res) =>{
 
 router.delete('/:messageId', async (req, res) =>{
     try {
-        const messageDeleted = await req.context.models.messages.deleteOne({id:req.params.messageId})
+        const messageDeleted = await req.context.models.messages.deleteOne({_id:req.params.messageId})
         res.send(`Mensaje eliminado`)
     } catch (error) {
         res.send('Mensaje no encontrado')
