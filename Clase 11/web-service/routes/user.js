@@ -1,23 +1,55 @@
 const router = require('express').Router()
 
-router.get('/', (req, res) =>{
-    return res.send(Object.values(req.context.models.users))
+router.get('/', async(req, res) =>{
+    try{
+        const users =  await req.context.models.users.find()
+        return res.send(users)
+    }catch(error){
+        res.send('Usuarios no encontrados')
+        res.status(404)
+    }
 })
 
-router.get('/:userId', (req, res) =>{
-    return res.send(req.context.models.users[req.params.userId])
+router.get('/:userId', async(req, res) =>{
+    try {
+        const userById = await req.context.models.users.findOne({id:req.params.userId})
+        return res.send(userById)
+    } catch (error) {
+        res.send('Usuario no encontrado')
+        res.status(404)
+    } 
 })
 
-router.post('/', (req, res) =>{
-    return res.send('Metodo POST HTTP')
+router.post('/', async (req, res) =>{
+    try {
+        const newUser = await req.context.models.users.create({
+            username: req.body.username
+        })
+        return res.send(newUser)
+    } catch (error) {
+        res.send('Error en la creacion de usuario')
+        res.status(400)
+    }
 })
 
-router.put('/:userId', (req, res) =>{
-    return res.send('Metodo PUT HTTP')
+router.put('/:userId', async (req, res) =>{
+    try {
+        const modifiedUser = await req.context.models.users.updateOne({id:req.params.userId},{username: req.body.username})
+        return res.send(modifiedUser)
+    } catch (error) {
+        res.send('Usuario no encontrado')
+        res.status(404)
+    }
 })
 
-router.delete('/:userId', (req, res) =>{
-    return res.send('Metodo DELETE GET HTTP')
+router.delete('/:userId', async(req, res) =>{
+    try {
+        const userDeleted = await req.context.models.users.deleteOne({id:req.params.userId})
+        res.send(`Usuario eliminado`)
+    } catch (error) {
+        res.send('Usuario no encontrado')
+        res.status(404)
+    }
 })
 
 module.exports = router

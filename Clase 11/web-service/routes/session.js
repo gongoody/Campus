@@ -1,7 +1,13 @@
 const router = require('express').Router()
 
-router.get('/', (req, res)=>{
-    return res.send(req.context.models.users[req.context.me.id])
+router.get('/', async(req, res)=> {
+    try{
+        const user = await req.context.models.users.findById(req.context.me.id)
+        return res.send(user)
+    }catch(error){
+        res.send(error)
+        res.status(500)
+    }
 })
 
 module.exports = router

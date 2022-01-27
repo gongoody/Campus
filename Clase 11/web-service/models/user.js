@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
 {timestamps: true}
 )
 
-userSchema.static.findByLogin = async function(login){
+userSchema.statics.findByLogin = async function(login){
     let user = await this.findOne({
         username : login
     })
