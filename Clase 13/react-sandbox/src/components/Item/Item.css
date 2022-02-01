@@ -1,0 +1,9 @@
+.wrapper-item{
+    padding: 20px;
+    font-size: 20px;
+}
+
+.wrapper-item button{
+    font-size: 20px;
+    background: none;
+}
