@@ -1,0 +1,15 @@
+.characters-wrapper{
+    min-width: 1250px;
+    max-width: 1350px;
+    margin: 0em auto;
+}
+
+.character-name{
+    margin: 0.5em auto;
+    border: black 1px solid;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: black 5px 5px;
+    padding: 0.5em;
+    text-transform: uppercase;
+}

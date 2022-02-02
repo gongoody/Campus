@@ -1,0 +1,19 @@
+.navbar-container{
+    display: flex;
+    margin: 0em auto;
+    min-width: 1250px;
+    max-width: 1350px;
+    height: 75px;
+    background-color: rgba(255, 255, 0, 0.8);
+}
+
+.wrapper{
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+
+.logo-navbar{
+    width: 50px;
+    margin: 0em 1em;
+}

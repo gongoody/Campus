@@ -1,0 +1,33 @@
+.wrapper-layout{
+    display: flex;
+    min-width: 1250px;
+    max-width: 1350px;
+    margin: 0em auto;
+    justify-content: space-around;
+}
+
+.layout-card{
+    width: 400px;
+    height: 300px;
+    border: black 1px solid;
+    border-radius: 25px;
+    text-decoration: none;
+    color: black;
+    margin: 5em;
+    box-shadow: black 10px 10px;
+    transition: 0.5s;
+}
+
+.layout-card:hover{
+    box-shadow: yellow 10px 10px;
+    border: yellow 1px solid;
+    transform: scale(1.2);
+}
+
+.character-img{
+    margin: 2em 1em;
+    width: 70%;
+}
+.message-img{
+    width: 60%;
+}
