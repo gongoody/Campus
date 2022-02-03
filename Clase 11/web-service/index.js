@@ -38,10 +38,10 @@ connectDb().then(async () =>{
 
 const createData = async () => {
     const user1 = new models.users({
-        username: 'hsimpson'
+        username: 'Homero Simpson'
     })
     const user2 = new models.users({
-        username: 'nflanders'
+        username: 'Ned Flanders'
     })
     const message1 = new models.messages({
         text: 'Mmmmm... mas rosquillas',
