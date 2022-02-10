@@ -10,7 +10,7 @@ export default function Messages(){
         <div>
             <NavBar/>
             <div className='messages-wrapper'>
-            {(dataMessages && dataCharacters) &&
+            {(dataMessages && dataCharacters)?
                 dataMessages.map((message) => {
                     return (
                         <div key={message._id} className='message-character-container'>
@@ -23,7 +23,8 @@ export default function Messages(){
                             <h2 key={message._id} className='message-text'>"{message.text}"</h2>
                         </div>
                     )
-                })
+                }):
+                <h1>Error al cargar la base de datos</h1>
             }
             </div>
         </div>

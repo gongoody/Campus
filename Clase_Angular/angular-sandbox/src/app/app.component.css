@@ -1,0 +1,17 @@
+article{
+    background-color: violet;
+    padding: 2rem 4rem;
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 20px 20px 0px cornflowerblue;
+    border: 6px solid mediumslateblue;
+    border-radius: 2rem;
+}
+
+header{
+    text-decoration: underline;
+}
+
+ul{
+    list-style: square;
+}

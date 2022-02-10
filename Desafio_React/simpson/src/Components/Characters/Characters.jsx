@@ -9,10 +9,11 @@ export default function Characters(){
         <div>
             <NavBar/>
             <div className='characters-wrapper'>
-            {data && 
+            {data?  
                 data.map((character) => {
                     return <h1 key={character._id} className='character-name'>{character.username}</h1>
                 })
+                : <h1>Error al cargar la base de datos</h1>
             }
             </div>
         </div>
