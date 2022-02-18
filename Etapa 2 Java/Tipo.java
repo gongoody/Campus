@@ -46,7 +46,7 @@ public class Tipo{
         System.out.println(Integer.parseInt("34"));
         System.out.println(Integer.toBinaryString(4));
 
-        boolean b1 = true;
+        //boolean b1 = true;
 
         char ch1 = 't';
         char ch2 = '\t';
@@ -54,8 +54,8 @@ public class Tipo{
 
         System.out.println("t: " + ch1 + " - \\t: " + ch2 + " - \\u0074: " + ch3);
 
-        int octal = 034;
-        int hexa = 0x1C;
+        //int octal = 034;
+        //int hexa = 0x1C;
 
         String hola = "¿Hola que tal como estas?";
         String chau = "chau";
